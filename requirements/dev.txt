@@ -1,0 +1,6 @@
+-r common.txt
+
+psycopg2==2.5.4
+django-extensions==1.4.6
+django-debug-toolbar==1.2.2
+django-bower==5.0.1
