@@ -1,6 +1,6 @@
 *.pyc
 *.log
 *.log.*
-media/
-static/
-bower_components/ 
+/media/
+/static/*
+bower_components/*

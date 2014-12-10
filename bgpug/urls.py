@@ -7,6 +7,8 @@ from django.conf.urls import (
 )
 from django.contrib import admin
 
+from bgpug import views
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -18,4 +20,7 @@ urlpatterns = patterns('',
 )
 
 if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^static_html/(?P<template_name>\w+)/$', views.StaticHtmlView.as_view(), name='static-html'),
+    )
     urlpatterns += static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
