@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category }}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+    <div class="work-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 work-title wow fadeIn">
+                    <h2>
+                        {% block list_heading %}
+                            {{ category }}
+                        {% endblock %}
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                {% block list_content %}
+                    {% include 'entry_list_content.html' with entries=object_list %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

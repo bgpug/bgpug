@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^comments/', include('django_comments.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^mce_filebrowser/', include('mce_filebrowser.urls')),
+    url(r'^(?P<template_name>about-us)', views.StaticHtmlView.as_view(), name='about-us')
 )
 
 if settings.DEBUG:

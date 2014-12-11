@@ -39,7 +39,7 @@ h3, h4 { line-height: 20px; }
 
 /***** Big links / buttons *****/
 
-a.big-link-1 {
+a.big-link-1, span.big-link-1 {
 	display: inline-block;
     padding: 5px 22px;
     background: #225e92;
@@ -51,11 +51,11 @@ a.big-link-1 {
     box-shadow: 0 1px 25px 0 rgba(0,0,0,.05) inset, 0 -1px 25px 0 rgba(0,0,0,.05) inset;
 }
 
-a.big-link-1:hover {
+a.big-link-1:hover, span.big-link-1:hover {
     -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
 }
 
-a.big-link-1:active {
+a.big-link-1:active, span.big-link-1:hover {
     -moz-box-shadow: 0 5px 10px 0 rgba(0,0,0,.15) inset, 0 -1px 25px 0 rgba(0,0,0,.05) inset;
     -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,.15) inset, 0 -1px 25px 0 rgba(0,0,0,.05) inset;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,.15) inset, 0 -1px 25px 0 rgba(0,0,0,.05) inset;
