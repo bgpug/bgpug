@@ -1,0 +1,12 @@
+{% extends 'zinnia/entry_list.html' %}
+{% load zinnia %}
+
+{% block title %}PostgreSQL България{% endblock %}
+
+{% block list_heading %}
+    Последни публикации
+{% endblock %}
+
+{% block list_content %}
+    {% get_recent_entries 4 'entry_list_content.html' %}
+{% endblock %}

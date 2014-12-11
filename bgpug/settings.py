@@ -148,6 +148,8 @@ ZINNIA_PING_EXTERNAL_URLS = False
 
 ZINNIA_SAVE_PING_DIRECTORIES = False
 
+ZINNIA_PAGINATION = 100
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -218,6 +220,7 @@ if DEBUG:
     BOWER_INSTALLED_APPS = (
         'jquery#1.10.2',
         'bootstrap#3.0.3',
+        'font-awesome#4.1.0',
     )
 
 else:
