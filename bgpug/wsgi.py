@@ -14,6 +14,8 @@ framework.
 
 """
 import os
+from uwsgidecorators import timer
+from django.utils import autoreload
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bgpug.settings")
 
@@ -26,3 +28,8 @@ application = get_wsgi_application()
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
+
+@timer(3)
+def change_code_gracefull_reload(sig):
+    if autoreload.code_changed():
+        uwsgi.reload()
