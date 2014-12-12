@@ -16,6 +16,7 @@ framework.
 import os
 from uwsgidecorators import timer
 from django.utils import autoreload
+import uwsgi
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bgpug.settings")
 
