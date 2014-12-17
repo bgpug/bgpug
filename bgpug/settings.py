@@ -50,6 +50,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
 )
 
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
@@ -59,6 +60,9 @@ PIPELINE = True
 PIPELINE_CSS = {
     'bgpug': {
         'source_filenames': (
+            'bootstrap/dist/css/bootstrap.min.css',
+            'font-awesome/css/font-awesome.min.css',
+            'css/style.css',
         ),
         'output_filename': 'bgpug.min.css',
     },
@@ -67,6 +71,8 @@ PIPELINE_CSS = {
 PIPELINE_JS = {
     'bgpug': {
         'source_filenames': (
+            'jquery/jquery.js',
+            'bootstrap/dist/js/bootstrap.js',
         ),
         'output_filename': 'bgpug.min.js',
     },
@@ -218,8 +224,8 @@ if DEBUG:
     BOWER_COMPONENTS_ROOT = PROJECT_PATH
 
     BOWER_INSTALLED_APPS = (
-        'jquery#1.10.2',
-        'bootstrap#3.0.3',
+        'jquery#2.0.3',
+        'bootstrap#3.2.0',
         'font-awesome#4.1.0',
     )
 
