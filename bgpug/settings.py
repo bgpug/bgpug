@@ -218,8 +218,8 @@ if DEBUG:
     BOWER_COMPONENTS_ROOT = PROJECT_PATH
 
     BOWER_INSTALLED_APPS = (
-        'jquery#1.10.2',
-        'bootstrap#3.0.3',
+        'jquery#2.1.1',
+        'bootstrap#3.2.0',
         'font-awesome#4.1.0',
     )
 
