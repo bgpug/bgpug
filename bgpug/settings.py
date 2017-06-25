@@ -70,8 +70,8 @@ PIPELINE = {
     'JAVASCRIPT': {
         'bgpug': {
             'source_filenames': (
-                'jquery/jquery.js',
-                'bootstrap/dist/js/bootstrap.js',
+                'jquery/dist/jquery.min.js',
+                'bootstrap/dist/js/bootstrap.min.js',
             ),
             'output_filename': 'bgpug.min.js',
         },
@@ -235,9 +235,9 @@ if DEBUG:
     BOWER_COMPONENTS_ROOT = PROJECT_PATH
 
     BOWER_INSTALLED_APPS = (
-        'jquery#2.0.3',
-        'bootstrap#3.2.0',
-        'font-awesome#4.1.0',
+        'jquery#3.2.1',
+        'bootstrap#3.3.7',
+        'font-awesome#4.7.0',
     )
 
 else:
