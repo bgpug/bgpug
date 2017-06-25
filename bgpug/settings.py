@@ -49,15 +49,13 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.CachedFileFinder',
     'pipeline.finders.PipelineFinder',
 )
 
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 PIPELINE = {
-    'PIPELINE_ENABLED': False,
-    'PIPELINE_COLLECTOR_ENABLED': False,
-
     'STYLESHEETS': {
         'bgpug': {
             'source_filenames': (
