@@ -38,7 +38,7 @@ workon bgpug
 pip install -r requirements/dev.txt
 
 nodeenv -p --node=6.11.0
-npm install -g bower
+npm install -g bower yuglify uglify-js
 ./manage.py bower_install
 
 createdb bgpug

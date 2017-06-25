@@ -70,8 +70,8 @@ PIPELINE = {
     'JAVASCRIPT': {
         'bgpug': {
             'source_filenames': (
-                'jquery/dist/jquery.min.js',
-                'bootstrap/dist/js/bootstrap.min.js',
+                'jquery/dist/jquery.js',
+                'bootstrap/dist/js/bootstrap.js',
             ),
             'output_filename': 'bgpug.min.js',
         },
@@ -81,6 +81,7 @@ PIPELINE = {
     'COMPILERS': (
         'pipeline.compilers.less.LessCompiler',
     ),
+    'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
 }
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
