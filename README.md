@@ -26,26 +26,23 @@ export SECRET_KEY='secret_key' # Required for production cryptography
 export RAVEN_CONFIG_DSN='..' # For DEBUG True
 ```
 
-
-Bower requirements
-------------------
-
-```bash
-./manage.py bower_install
-```
-
-
 Instructions for running in development
 ---------------------------------------
 
 ```bash
 git clone
-mkvirtualenv -p /usr/bin/python3.? bgpug
+
+mkvirtualenv -p `which python3` bgpug
 vim "$WORKON_HOME"/bgpug/bin/postactivate # export db variables, secret key, debug, etc.
 workon bgpug
 pip install -r requirements/dev.txt
+
+nodeenv -p --node=6.11.0
+npm install -g bower
 ./manage.py bower_install
+
 createdb bgpug
 ./manage.py migrate
+./manage.py createsuperuser
 ./manage.py runserver
 ```
