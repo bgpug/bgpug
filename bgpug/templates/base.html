@@ -1,0 +1,164 @@
+{% load static zinnia pipeline %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="all" />
+        <meta name="city" content="Sofia"/>
+        <meta name="country" content="Bulgaria"/>
+        <meta name="resource-type" content="document"/>
+        <meta name="distribution" content="global"/>
+        <meta name="allow-search" content="yes"/>
+        <meta name="rating" content="general"/>
+        <meta name="audience" content="General"/>
+        <meta name="Description" content="PosgreSQL България"/>
+
+        <meta property="og:image" content="https://bgpug.org/img/bgpug_logo_web.png" />
+        <meta property="og:locale" content="bg_BG" />
+        <meta property="og:type" content="website" />
+        {% block extra_meta %}
+        <meta property="og:url" content="https://bgpug.org"/>
+        {% endblock %}
+
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+        <title>BGPUG - {% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+		{% stylesheet 'bgpug' %}
+		{% javascript 'bgpug' %}
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		  ga('create', 'UA-56244611-1', 'auto');
+		  ga('send', 'pageview');
+		</script>
+
+    </head>
+
+    <body>
+
+        <!-- Top menu -->
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"></a>
+                </div>
+                {% block navigation %}
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="/">
+                                    <span class="fa fa-home" aria-hidden="true"></span>
+                                    <br>Начало
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/categories/news/">
+                                    <span class="fa fa-globe" aria-hidden="true"></span>
+                                    <br>Новини
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/categories/articles/">
+                                    <span class="fa fa-book" aria-hidden="true"></span>
+                                    <br>Статии
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/conf2017/">
+                                    <span class="fa fa-thumbs-up" aria-hidden="true"></span>
+                                    <br>BGPUG Conf
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/about-us/">
+                                    <span class="fa fa-info" aria-hidden="true"></span>
+                                    <br>За групата
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/feeds/">
+                                    <span class="fa fa-rss" aria-hidden="true"></span>
+                                    <br>RSS
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                {% endblock %}
+            </div>
+        </nav>
+
+        {% block slider %}
+            <!-- Slider -->
+            <div class="slider-container presentation-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 wow fadeInLeftBig">
+                            <h1>Добре дошли в сайта на <span class="violet">PostgreSQL</span>&nbsp;&nbsp;България.</h1>
+							<p>Тук може да намерите полезна информация относно любимата СУБД и разбира се да споделите своя опит.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block breadcrumbs %}
+            <div class="container">
+                <div class="row">
+                    <div id="breadcrumbs" class="hfeed col-xs-12 col-sm-9 col-md-9 col-lg-9" style="text-align: justify;">
+                        {% zinnia_breadcrumbs 'Начало' %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+
+        {% block footer %}
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 footer-box wow fadeInDown">
+                            <h4>Контакти</h4>
+                            <div class="footer-box-text footer-box-text-contact">
+                                <p><i class="fa fa-map-marker"></i> Адрес: София, България</p>
+                                <p><i class="fa fa-envelope"></i> Пощенски списък: <a href="mailto:postgresql-bulgaria@googlegroups.com">postgresql-bulgaria (на) googlegroups.com</a></p>
+                                <p><i class="fa fa-user"></i> Facebook: <a href="https://www.facebook.com/groups/1486318968296909/">PostgreSQL България</a></p>
+                                <p><i class="fa fa-envelope"></i> Email: <a href="">info (на) bgpug.org</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 wow fadeIn">
+                            <div class="footer-border"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7 footer-copyright wow fadeIn">
+                            <p>Copyright © 2014 PostgreSQL България.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+    </body>
+</html>

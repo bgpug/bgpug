@@ -1,0 +1,11 @@
+				{% for entry in entries  %}
+					<div class="col-sm-3">
+						<div class="work wow {% if forloop.counter|divisibleby:2 %}fadeInUp{% else %}fadeInDown{% endif %}">
+							<img data-at2x="{% if entry.image %}{{ entry.image.url }}{% endif %}" alt="{{ entry.title }}" src="{% if entry.image %}{{ entry.image.url }}{% endif %}">
+							<h3>{{ entry.title }}</h3>
+							<p>{{ entry.excerpt|linebreaks|truncatewords_html:10 }}</p>
+							<a class="big-link-1" href="{{ entry.get_absolute_url }}">Прочети повече</a>
+						</div>
+					</div>
+				{% endfor %}
+

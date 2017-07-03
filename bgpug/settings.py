@@ -4,7 +4,6 @@ PROJECT_PATH = os.path.abspath(os.path.join(__file__, '../../'))
 project = lambda x: os.path.join(PROJECT_PATH, x)
 
 DEBUG = bool(os.environ.get('DEBUG'))
-TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
     'default': {
@@ -50,56 +49,68 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.CachedFileFinder',
+    'pipeline.finders.PipelineFinder',
 )
 
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
-PIPELINE = True
-
-PIPELINE_CSS = {
-    'bgpug': {
-        'source_filenames': (
-        ),
-        'output_filename': 'bgpug.min.css',
+PIPELINE = {
+    'STYLESHEETS': {
+        'bgpug': {
+            'source_filenames': (
+                'bootstrap/dist/css/bootstrap.min.css',
+                'font-awesome/css/font-awesome.min.css',
+                'css/style.css',
+            ),
+            'output_filename': 'bgpug.min.css',
+        },
     },
-}
 
-PIPELINE_JS = {
-    'bgpug': {
-        'source_filenames': (
-        ),
-        'output_filename': 'bgpug.min.js',
+    'JAVASCRIPT': {
+        'bgpug': {
+            'source_filenames': (
+                'jquery/dist/jquery.js',
+                'bootstrap/dist/js/bootstrap.js',
+            ),
+            'output_filename': 'bgpug.min.js',
+        },
     },
+
+
+    'COMPILERS': (
+        'pipeline.compilers.less.LessCompiler',
+    ),
+    'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
 }
-
-
-PIPELINE_COMPILERS = (
-    'pipeline.compilers.less.LessCompiler',
-)
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'secret_key')
 
-TEMPLATE_LOADERS = (
-    'app_namespace.Loader',
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [
+        project('bgpug/templates'),
+    ],
+    'OPTIONS': {
+        'context_processors': [
+            'django.contrib.auth.context_processors.auth',
+            'django.template.context_processors.debug',
+            'django.template.context_processors.i18n',
+            'django.template.context_processors.request',
+            'django.template.context_processors.media',
+            'django.template.context_processors.static',
+            'django.template.context_processors.tz',
+            'django.contrib.messages.context_processors.messages',
+        ],
+        'loaders': [
+            'app_namespace.Loader',
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ],
+    },
+}]
 
-TEMPLATE_DIRS = (
-    project('bgpug/templates'),
-)
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.request',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-)
-
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,7 +119,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'pipeline.middleware.MinifyHTMLMiddleware',
-)
+]
 
 ROOT_URLCONF = 'bgpug.urls'
 
@@ -122,6 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
+    'django.contrib.sitemaps',
     'django_comments',
     'mptt',
     'tagging',
@@ -147,6 +159,8 @@ TINYMCE_DEFAULT_CONFIG = {
 ZINNIA_PING_EXTERNAL_URLS = False
 
 ZINNIA_SAVE_PING_DIRECTORIES = False
+
+ZINNIA_PAGINATION = 100
 
 LOGGING = {
     'version': 1,
@@ -209,22 +223,35 @@ if DEBUG:
         'djangobower',
     )
 
+    MIDDLEWARE = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware'
+    ] + MIDDLEWARE
+
+    INTERNAL_IPS = ['127.0.0.1']
+
     STATICFILES_FINDERS += (
         'djangobower.finders.BowerFinder',
     )
 
     BOWER_COMPONENTS_ROOT = PROJECT_PATH
 
-    BOWER_INSTALLED_APPS = ()
+    BOWER_INSTALLED_APPS = (
+        'jquery#3.2.1',
+        'bootstrap#3.3.7',
+        'font-awesome#4.7.0',
+    )
 
 else:
     INSTALLED_APPS += (
         'raven.contrib.django.raven_compat',
     )
 
-    TEMPLATE_LOADERS = (
-        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
-    )
+    TEMPLATES[0]['OPTIONS']['loaders'] = [
+        (
+            'django.template.loaders.cached.Loader',
+            TEMPLATES[0]['OPTIONS']['loaders'],
+        ),
+    ]
 
     RAVEN_CONFIG = {
         'dsn': os.environ.get('RAVEN_CONFIG_DSN'),
