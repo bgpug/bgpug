@@ -9,7 +9,7 @@ from zinnia.models.entry import Entry
 
 class EntryAdmin(ZinniaEntryAdmin):
     formfield_overrides = {
-        models.TextField: {'widget': TinyMCE},
+        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
     }
 
     def _media(self):
