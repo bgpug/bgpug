@@ -1,0 +1,57 @@
+{% extends "static_html/base.html" %}
+{% load zinnia %}
+
+{% block title %}PostgreSQL България{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+	<!-- Services -->
+	<div class="work-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 work-title wow fadeIn">
+					<h2>Последни публикации</h2>
+				</div>
+			</div>
+			<div class="row">
+				{% get_recent_entries 4 "static_html/index_article_list.html" %}
+			</div>
+		</div>
+	</div>
+
+	{% comment %}
+	<!-- Latest work -->
+	<div class="work-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 work-title wow fadeIn">
+					<h2>Последни статии</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="work wow fadeInUp">
+						<img src="img/portfolio/work1.jpg" alt="Lorem Website" data-at2x="img/portfolio/work1.jpg">
+						<h3>Lorem Website</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
+						<div class="work-bottom">
+							<a class="big-link-2" href="portfolio.html"><i class="fa fa-link"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="work wow fadeInDown">
+						<img src="img/portfolio/work4.jpg" alt="Sit Amet Website" data-at2x="img/portfolio/work4.jpg">
+						<h3>Sit Amet Website</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
+						<div class="work-bottom">
+							<a class="big-link-2" href="portfolio.html"><i class="fa fa-link"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endcomment %}
+{% endblock %}

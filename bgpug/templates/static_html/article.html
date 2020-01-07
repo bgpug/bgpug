@@ -1,0 +1,140 @@
+{% extends "static_html/base.html" %}
+
+{% block title %}{{ object.title }}{% endblock title %}
+
+{% block content %}
+<!-- Services -->
+<div class="services-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="service wow fadeInUp">
+					<div class="service-icon"></div>
+						<article id="entry-1" class="hentry" style="text-align: justify;">
+							<header class="entry-header page-header">
+								<h3 class="entry-title">
+									<a href="/2014/11/20/postgresql-94-rc1-released/" title="PostgreSQL 9.4 rc1 released" rel="bookmark"> PostgreSQL 9.4 rc1&nbsp;released </a><br />
+										<small class="entry-info">Написано от <span class="vcard author"><a href="/authors/dvd/" class="fn url nickname" rel="author" title="Покажи всички статии от dvd's">dvd</a></span>
+											 на <time class="published" datetime="2014-11-20T22:52:28+02:00" pubdate="pubdate">Ноев. 20, 2014</time> в
+											 <a href="/categories/news/" title="Покажи всички статии в категория Новини" rel="tag category">Новини</a>.
+										</small>
+								</h3>
+								<p class="entry-last-update" style="display: none;">Последно обновление на <time class="updated" datetime="2014-12-05T22:57:16.107117+02:00">Дек. 5, 2014</time>.</p>
+							</header>
+							<div class="entry-body">
+								<div class="entry-content">
+									<p>The PostgreSQL Global Development Group has released 9.4 RC 1, the first release candiate for the next version of PostgreSQL. This release should be identical to the final version of PostgreSQL 9.4, excepting any fixes for bugs found in the next two weeks. Please download, test, and report what you find.</p><p>For a full listing of the features in version 9.4, please see the <a href="http://www.postgresql.org/docs/devel/static/release-9-4.html">release notes</a>. Additional descriptions and notes on the new features are available on the <a href="https://wiki.postgresql.org/wiki/What%27s_new_in_PostgreSQL_9.4">9.4 Features Wiki Page</a>.</p><p>We depend on our community to help test the next version in order to guarantee that it is high-performance and bug-free. Please download PostgreSQL 9.4 RC 1 and try it with your workloads and applications as soon as you can, and give feedback to the PostgreSQL developers. Features and APIs in this release candidate should be identical to 9.4.0, allowing you to build and test your applications against it. <a href="http://www.postgresql.org/developer/beta">More information on how to test and report issues</a></p><p>Get the PostgreSQL 9.4 RC 1, including binaries and installers for Windows, Linux and Mac from <a href="http://www.postgresql.org/download">our download page</a>.</p><p>Full documentation of the new version <a href="http://www.postgresql.org/docs/9.4/static">is available online</a>, and also installs with PostgreSQL.</p>
+								</div>
+							</div>
+
+							<footer class="entry-footer well">
+								<p class="entry-tags">
+									<span class="glyphicon glyphicon-tags"></span>
+									<strong>Етикети</strong> :
+									<a href="/tags/Announcement/" title="Покажи всички статии с етикет: Announcement" rel="tag">Announcement</a>
+								</p>
+								<p class="entry-shorturl">
+									<span class="glyphicon glyphicon-bookmark"></span>
+									<strong>Кратък URL адрес</strong> :
+									<a href="http://dev.bgpug.org/1/" title="Покажи URL адрес за PostgreSQL 9.4 rc1 released" rel="shortlink">http://dev.bgpug.org/1/</a>
+								</p>
+								<p class="entry-discussions">
+									<span class="glyphicon glyphicon-comment"></span>
+									<strong>Дискусии</strong> :
+									<a href="/2014/11/20/postgresql-94-rc1-released/#comments" title="Коментари по PostgreSQL 9.4 rc1 released">3 comments </a>
+								</p>
+							</footer>
+					</article>
+					<aside class="entry-widgets" role="complementary">
+						<div class="entry-similar panel panel-default">
+							<div class="panel-heading"> Подобно статии </div>
+								<ul class="list-group">
+									<!-- for similar -->
+									<li class="list-group-item">  Няма подобни статии </li>
+									<!-- endfor -->
+								</ul>
+							</div>
+							<div class="entry-prev-next">
+								<ul class="pager"></ul>
+							</div>
+					</aside>
+					<section id="comments" class="panel panel-info" style="text-align: justify;">
+						<div class="panel-heading"> Коментари</div>
+						<ol id="comment-list" class="list-group">
+							<!-- for comment in -->
+							<li id="comment-1-by-test" class="comment vcard list-group-item box1">
+								<p class="comment-info">
+									<img src="http://www.gravatar.com/avatar/dd46a756faad4727fb679320751f6dea?r=G&amp;s=60" class="gravatar photo img-thumbnail" alt="test" />
+									<a href="http://test.test/" rel="external nofollow" class="fn url">test</a> на <abbr class="comment-published" title="2014-12-08T14:40:28.990296+02:00">12/08/2014 2:40 след обяд </abbr>
+									<a href="#comment-1-by-test" id="c1" class="anchor-link" title="Директна връзка към този коментар">#</a>
+								</p>
+								<p>test</p>
+							</li>
+							<!-- endfor -->
+						</ol>
+					</section>
+					<form action="/comments/post/" method="post" id="comment-form" class="well form-horizontal">
+						<!-- something like {{ form }} here -->
+						<div><input type='hidden' name='csrfmiddlewaretoken' value='hTKugGoIqiDcThz15Z3glft3DWrayfcr' /></div>
+						<fieldset>
+							<legend>Напишете коментар</legend>
+							<input type="hidden" name="next" value="/comments/success/"/>
+							<input id="id_content_type" name="content_type" type="hidden" value="zinnia.entry" />
+							<input id="id_object_pk" name="object_pk" type="hidden" value="1" />
+							<input id="id_timestamp" name="timestamp" type="hidden" value="1418231283" />
+							<input id="id_security_hash" maxlength="40" name="security_hash" type="hidden" value="d067895b9b74d5c0260a69fb10372eed84d6ac91" />
+							<div>
+								<div class="form-group"><label for="id_name" class="col-lg-2 control-label">Name</label>
+									<div class="col-lg-10"><input type="text" id="id_name" class="form-control"  name="name" /></div>
+								</div>
+							</div>
+							<div>
+								<div class="form-group"><label for="id_email" class="col-lg-2 control-label">Email адрес</label>
+								  <div class="col-lg-10"><input type="text" id="id_email" class="form-control"  name="email" /></div>
+								</div>
+							</div>
+							<div>
+								<div class="form-group"><label for="id_url" class="col-lg-2 control-label">URL адрес</label>
+									<div class="col-lg-10"><input type="text" id="id_url" class="form-control"  name="url" /></div>
+								</div>
+							</div>
+							<div>
+								<div class="form-group"><label for="id_comment" class="col-lg-2 control-label">Коментар</label>
+									<div class="col-lg-10"><textarea id="id_comment" class="form-control" rows="10" name="comment"></textarea></div>
+								</div>
+							</div>
+							<div style="display:none;">
+								<div class="form-group"><label for="id_honeypot" class="col-lg-2 control-label">If you enter anything in this field your comment will be treated as spam</label>
+									<div class="col-lg-10"><input type="text" id="id_honeypot" class="form-control"  name="honeypot" /></div>
+								</div>
+							</div>
+							<p class="submit">
+								<input type="submit" name="submit" class="submit-post btn btn-primary submit-preview" value="Post" />
+								<input type="submit" name="preview" class="submit-preview btn btn-default submit-post" value="Преглед" />
+							</p>
+						</fieldset>
+					</form>
+					<!-- end of form -->
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<!-- for shit in box -->
+				<div class="service wow fadeInDown">
+					<div class="service-icon"><i class="fa fa-table"></i></div>
+					<h3>Responsive Layout</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...</p>
+					<a class="big-link-1" href="services.html">Прочети повече</a>
+				</div>
+				<!-- endfor -->
+				<div class="service wow fadeInDown">
+					<div class="service-icon"><i class="fa fa-table"></i></div>
+					<h3>Responsive Layout</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...</p>
+					<a class="big-link-1" href="services.html">Прочети повече</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

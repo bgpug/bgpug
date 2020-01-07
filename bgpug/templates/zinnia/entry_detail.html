@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load comments zinnia %}
+
+{% block title %}{{ entry.title }}{% endblock %}
+
+{% block content %}
+    <div class="services-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="service wow fadeInUp">
+                        {% block main %}
+                            <div class="service-icon"></div>
+                                <article id="entry-1" class="hentry" style="text-align: justify;">
+                                    <header class="entry-header page-header">
+                                        <h3 class="entry-title">
+                                            <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a><br />
+                                            <small class="entry-info">
+                                                {% with entry.categories.first as category %}
+                                                    Написано от <span class="vcard author"><a class="fn url nickname" rel="author">{{ entry.authors.first }}</a></span>
+                                                    на <time class="published" datetime="{{ entry.creation_date.isoformat }}" pubdate="pubdate">{{ entry.creation_date|date:'d.m.Y' }}</time>
+                                                    в <a href="{{ category.get_absolute_url }}" title="Покажи всички статии в категория {{ category }}" rel="tag category">{{ category }}</a>.
+                                                {% endwith %}
+                                            </small>
+                                        </h3>
+                                        <p class="entry-last-update" style="display: none;">Последно обновление на <time class="updated" datetime="{{ entry.last_update.isoformat }}">{{ entry.last_update|date:'d.m.Y' }}</time>.</p>
+                                    </header>
+                                    <div class="entry-body">
+                                        <div class="entry-content">
+                                            {{ entry.html_content|safe }}
+                                        </div>
+                                    </div>
+
+                                    <footer class="entry-footer well">
+                                        <p class="entry-shorturl">
+                                            <span class="glyphicon glyphicon-bookmark"></span>
+                                            <strong>Кратък URL адрес</strong> :
+                                            <a href="{{ entry.short_url }}" title="Покажи URL адрес за {{ entry.title }}" rel="shortlink">{{ entry.short_url }}</a>
+                                        </p>
+                                        <p class="entry-discussions">
+                                            <span class="glyphicon glyphicon-comment"></span>
+                                            <strong>Дискусии</strong> :
+                                            <a href="{{ entry.get_absolute_url }}#comments" title="Коментари по {{ entry.title }}">{{ entry.comment_count }} бр.</a>
+                                        </p>
+                                    </footer>
+                            </article>
+                            <aside class="entry-widgets" role="complementary">
+                                <div class="entry-similar panel panel-default">
+                                    <div class="panel-heading"> Подобни статии </div>
+                                        <ul class="list-group">
+                                            {% with entry_related=object.related_published %}
+                                                {% if entry_related %}
+                                                    {% for entry in entry_related %}
+                                                        <li class="list-group-item">
+                                                            <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" rel="bookmark">{{ entry.title }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <li class="list-group-item">  Няма подобни статии </li>
+                                                {% endif %}
+                                            {% endwith %}
+                                        </ul>
+                                    </div>
+                            </aside>
+                            {% with comments_list=entry.comments %}
+                                {% if entry.comments %}
+                                    <section id="comments" class="panel panel-info" style="text-align: justify;">
+                                        <div class="panel-heading"> Коментари</div>
+                                        <ol id="comment-list" class="list-group">
+                                            {% for comment in comments_list %}
+                                                <li id="comment-{{ comment.pk }}-by-{{ comment.user_name|slugify }}" class="comment vcard list-group-item box1">
+                                                    <p class="comment-info">
+                                                        <img src="{% get_gravatar comment.email 60 "G" %}" class="gravatar photo img-thumbnail" alt="{{ comment.name }}" />
+                                                        <a href="{{ comment.url }}" rel="external nofollow" class="fn url">{{ comment.name }}</a> на <abbr class="comment-published" title="{{ comment.submit_date.isoformat }}">{{ comment.submit_date|date:'d.m.Y H:M' }}</abbr>
+                                                        <a href="#comment-{{ comment.pk }}-by-{{ comment.user_name|slugify }}" id="c{{ comment.pk }}" class="anchor-link" title="Директна връзка към този коментар">#</a>
+                                                    </p>
+                                                    <p>{{ comment.comment|linebreaks }}</p>
+                                                </li>
+                                            {% endfor %}
+                                        </ol>
+                                    </section>
+                                {% endif %}
+                            {% endwith %}
+                            {% if object.comments_are_open %}
+                                {% render_comment_form for entry %}
+                            {% endif %}
+                        {% endblock %}
+                    </div>
+                </div>
+                {% block sidebar %}
+                    <div id="sidebar" class="col-sm-3">
+                        <aside class="widget panel panel-default">
+                            <div class="panel-heading">
+                                Последни публикации
+                            </div>
+                            {% get_recent_entries %}
+                        </aside>
+                        <aside class="widget panel panel-default">
+                            <div class="panel-heading">
+                                Най-четени статии
+                            </div>
+                            {% get_popular_entries %}
+                        </aside>
+                        <aside class="widget panel panel-default">
+                            <div class="panel-heading">
+                                Случайно избрани статии
+                            </div>
+                            {% get_random_entries %}
+                        </aside>
+                        <aside class="widget panel panel-default">
+                            <div class="panel-heading">
+                                Последни коментари
+                            </div>
+                            {% get_recent_comments %}
+                        </aside>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
