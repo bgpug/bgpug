@@ -1,4 +1,4 @@
-Django==1.7
+Django==2.2.24
 django-pipeline==1.3.26
 django-app-namespace-template-loader==0.2
 Pillow==2.6.1
